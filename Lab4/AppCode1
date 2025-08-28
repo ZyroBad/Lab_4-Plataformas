@@ -1,0 +1,146 @@
+package com.example.si
+
+// Importaciones necesarias para Jetpack Compose y recursos de Android
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.graphics.Color
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+
+// Actividad principal que inicializa la interfaz de usuario
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            si()
+        }
+    }
+}
+
+// Composable principal que define la estructura visual de la app
+@Preview(showBackground = true)
+@Composable
+fun si(){
+    // Contenedor principal con fondo y bordes
+    Box(
+        //Para ajustar el tamano del borde y colores.
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Green)
+            .padding(5.dp)
+            .background(Color.White),
+        contentAlignment = Alignment.Center
+    ) {
+        // Imagen de fondo
+        Image(
+            //Para insertar la imagen
+            painter = painterResource(id =R.drawable.uvg),
+            contentDescription = null,
+            //Para ajustar el tamano y opacidad.
+            modifier = Modifier
+                .size(200.dp)
+                .alpha(0.8f),
+            contentScale = ContentScale.Crop
+        )
+
+        // Columna principal con la información de la universidad y participantes
+        Column (
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ){
+            // Nombre de la universidad
+            Text(
+                text = "Universidad del Valle de Guatemala",
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Bold
+            )
+
+            // Nombre del curso y sección
+            Text(
+                text = "Programacion de plataformas moviles"
+            )
+
+            Text(
+                text = "seccion 30"
+            )
+
+            // Fila con los títulos y nombres de integrantes y catedrático
+            Row () {
+                Column {
+                    Text(
+                        text = "INTEGRANTES",
+                        fontWeight = FontWeight.Bold
+                    )
+
+                    Spacer(modifier = Modifier.height(82.dp))
+
+                    Text(
+                        text = "CATEDRATICO",
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+
+                Spacer(modifier = Modifier.width(100.dp))
+
+                Column () {
+                    Text(
+                        text = "Sebastian Lemus",
+                    )
+
+                    Text(
+                        text = "Luis Hernandez"
+                    )
+
+                    Text (
+                        text = "Arodi Chavez"
+                    )
+
+                    Spacer(modifier = Modifier.height(50.dp))
+
+                    Text(
+                        text = "Juan Carlos Durini"
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(200.dp))
+
+            // Mi info
+            Column (horizontalAlignment = Alignment.CenterHorizontally){
+                Text(
+                    text = "David Sebastian Lemus Nitsch"
+                )
+
+                Text(
+                    text = "241155"
+                )
+            }
+
+
+        }
+    }
+
+}
